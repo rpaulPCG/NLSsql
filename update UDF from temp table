@@ -1,0 +1,22 @@
+USE NLSDEV
+GO
+CREATE TABLE #ToDo (PortClass numeric(9,0), ToVal varchar(10))
+GO
+Insert into #ToDo(PortClass, ToVal) values
+(4,'2'),
+(5, '99'),
+(6,'0'),
+(7,'1'),
+(8,'3'),
+(10,'4'),
+(11,'5'),
+(13,'6'),
+(12,'2'),
+(9,'1')
+UPDATE loanacct_detail set UserDef27 = ToVal
+FROM  (loanacct INNER JOIN loanacct_detail 
+              ON loanacct.acctrefno = loanacct_detail.acctrefno) 
+              INNER JOIN #ToDo 
+              ON loanacct.loan_class2_no = #ToDo.PortClass
+GO
+DROP TABLE #ToDo
