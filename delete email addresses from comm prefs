@@ -1,0 +1,11 @@
+SELECT '<?xml version="1.0" encoding="utf-8"?>' + CHAR(13)+CHAR(10) + '<NLS CommitBlock="0" EnforceTagExistence="1" ValidateAddress="0" ShowSuccessResult="0">' 
+UNION ALL
+SELECT 
+	'<LOAN UpdateFlag="1" LoanNumber="'+loan_number+'"><COMMUNICATION><EMAILADDRESSES><EMAILADDRESS Operation="DELETE" Address="'+LoanCommunicationAddress.Address+'" ></EMAILADDRESS></EMAILADDRESSES></COMMUNICATION></LOAN>'  
+FROM            cif INNER JOIN
+                         loanacct ON cif.cifno = loanacct.cifno INNER JOIN
+                         LoanCommunicationPreferences ON loanacct.acctrefno = LoanCommunicationPreferences.acctrefno INNER JOIN
+                         LoanCommunicationAddress ON LoanCommunicationPreferences.LoanCommunicationPreferencesID = LoanCommunicationAddress.LoanCommunicationPreferencesID
+WHERE        (LoanCommunicationAddress.Address <> '') AND (LoanCommunicationAddress.AddressType = 0)
+UNION ALL
+SELECT '</NLS>'
