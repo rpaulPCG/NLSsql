@@ -1,0 +1,4 @@
+select l.acctrefno, l.loan_number, e.sentdate, e.Subject
+from EmailHistory e, loanacct l
+where l.acctrefno = e.NLSKeyID 
+and e.NLSType = 2
