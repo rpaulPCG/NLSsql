@@ -1,0 +1,12 @@
+SELECT '<?xml version="1.0" encoding="utf-8"?>' + CHAR(13)+CHAR(10) + '<NLS CommitBlock="0" EnforceTagExistence="1" ValidateAddress="0" ShowSuccessResult="0">' 
+UNION ALL
+
+/* SAMPLE CODE FOR CREATING XML
+SELECT 
+	'<LOAN UpdateFlag="1" LoanNumber="'+loan_number+'"><COMMUNICATION><EMAILADDRESSES><EMAILADDRESS Operation="ADD" Address="'+ISNULL(email,'') +'"></EMAILADDRESS></EMAILADDRESSES></COMMUNICATION></LOAN>'  
+FROM            cif INNER JOIN
+                         loanacct ON cif.cifno = loanacct.cifno 
+WHERE cif.email <>''
+*/
+UNION ALL
+SELECT '</NLS>'
