@@ -1,0 +1,45 @@
+ 
+USE [NLS]
+GO
+ 
+UPDATE LN
+     SET printed_indicator = 1
+--SELECT P.*
+--      ,LN.[statement_code]
+--      ,[statement_date]
+--      ,[statement_due_date]
+--      ,[print_run_number]
+--      ,[printed_date]
+--      ,[printed_indicator]
+--      ,[sequence_in_run]
+--      ,LN.[acctrefno]
+--      ,LN.[loannumber]
+--      ,[cifno]
+--      ,[current_rate]
+--      ,[loan_group_no]
+--      ,[total_past_due_balance]
+--      ,[total_current_due_balance]
+--      ,[original_note_amount]
+--      ,[current_note_amount]
+--      ,[current_principal_balance]
+--      ,[current_interest_balance]
+--      ,[current_fees_balance]
+--      ,[current_late_charge_balance]
+--      ,[current_payoff_balance]
+--      ,[current_perdiem]
+--      ,[addonint_total]
+--      ,[addonint_remaining]
+--      ,[minimum_payment_amount]
+--      ,[credit_line_limit]
+--      ,[balloon_payment_amount]
+--      ,[balloon_payment_date]
+--      ,[amortized_payment_amount]
+--      ,[last_payment_amount]
+--      ,[last_payment_date]
+--      ,[communication_send_printout]
+--      ,[communication_emailed]
+--      ,[communication_sms]
+--      ,[current_TierRateNo]
+  FROM [dbo].[loanacct_latenotice] LN
+  INNER JOIN [PCGUtilities].[dbo].[zzSetPrinted1LateNotice] P ON P.acctrefno = LN.acctrefno AND P.statement_code = LN.statement_code AND printed_indicator = 0
+GO
