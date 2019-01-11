@@ -10,3 +10,19 @@ INNER JOIN    [PCGUtilities].[dbo].[AP in NLS no Schedule] P ON P.loan_number = 
 
 UNION ALL
 SELECT '</NLS>'
+
+
+
+
+SELECT '<?xml version="1.0" encoding="utf-8"?>' + CHAR(13)+CHAR(10) + '<NLS CommitBlock="0" EnforceTagExistence="1" ValidateAddress="0" ShowSuccessResult="0">' 
+UNION ALL
+--SAMPLE CODE FOR CREATING XML
+SELECT 
+	'<LOAN UpdateFlag="1" LoanNumber="'+la.loan_number+'">
+		<LOANSTATUSES Operation="REMOVE"  LoanStatusCode="AUTO PAY" EffectiveDate="01/11/2019"/>
+	</LOAN>'
+FROM          nls.dbo.loanacct LA
+INNER JOIN    [PCGUtilities].[dbo].[ScheduleNotAPinNLS] P ON P.[loan number] = La.loan_number
+
+UNION ALL
+SELECT '</NLS>'
