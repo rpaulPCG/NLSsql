@@ -1,0 +1,3 @@
+update loanacct
+set loan_group_no = '16'
+where dealer_cifno = '33' and loan_group_no <>'16'
