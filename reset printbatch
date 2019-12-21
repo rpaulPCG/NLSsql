@@ -1,0 +1,3 @@
+UPDATE DocumentQueue SET PrintshopBatchID = Null
+ 
+WHERE DocumentQueue.PrintshopBatchID =<<batchID>>
