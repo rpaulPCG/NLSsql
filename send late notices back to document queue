@@ -1,0 +1,6 @@
+update loanacct_latenotice
+                set printed_indicator = 0,
+                                printed_date = null,
+                                sequence_in_run = null,
+                                print_run_number = null
+                where print_run_number = ?
